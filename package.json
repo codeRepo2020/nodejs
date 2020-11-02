@@ -6,12 +6,12 @@
   "scripts": {
     "start": "node src/run.js",
     "start:resetdb": "FORCE_DB_RESET=true node src/run.js",
-    "seeddata": "DEBUG=* node scripts/seed_sampledata.js"
+    "seeddata": "node scripts/seed_sampledata.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.3",
+    "express": "^4.17.1",
     "express-hbs": "^1.0.4",
     "express-session": "^1.15.6",
     "mysql2": "^1.6.1",
