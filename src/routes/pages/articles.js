@@ -15,7 +15,6 @@ route.post('/', async (req, res) => {
   // Add a new article
   var id =1
   console.log('session'+JSON.stringify(req.session))
-  console.log('session'+JSON.stringify(req.session))
   console.log(JSON.stringify(req.body))
   if(req.session.passport){
   id=req.session.passport.user
@@ -33,19 +32,30 @@ route.post('/', async (req, res) => {
   }
 })
 
-route.get('/:id', async (req, res) => {
+route.get('/myArticle', async (req, res) => {
   // Fetch a particular article
-  const articleId = req.params.id
+  console.log('inside1')
+  var id =1
+  console.log('session'+JSON.stringify(req.session))
+  console.log(JSON.stringify(req.body))
+  if(req.session.passport){
+  id=req.session.passport.user
+  console.log('inside2')
+  const articleId = id
   if (isNaN(parseInt(articleId))) {
     console.error(new Error('Article ID is not correct number'))
     res.redirect('/')
   }
   try {
     const article = await fetchArticleById(articleId)
-    res.render('pages/articles/id', { article })
+    console.log('articleId'+JSON.stringify(article))
+    res.render('pages/id', { article })
   } catch (e) {
     throw e
   }
+}else{
+  res.redirect('/login')
+}
 })
 
 module.exports = route

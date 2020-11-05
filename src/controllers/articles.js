@@ -33,6 +33,28 @@ async function fetchArticles () {
 
 async function fetchArticleById (articleId) {
   try {
+    return await
+    Article.findAll({
+      where: {
+        authorId: articleId
+      },
+      include: [
+        { model: User, as: 'author', attributes: ['username'] }
+      ]
+    });
+  } catch (e) {
+    throw e
+  }
+}
+
+module.exports = {
+  createArticle,
+  fetchArticles,
+  fetchArticleById
+}
+/*
+async function fetchArticleById (articleId) {
+  try {
     return await Article.findById(articleId, {
       include: [
         {
@@ -51,8 +73,4 @@ async function fetchArticleById (articleId) {
   }
 }
 
-module.exports = {
-  createArticle,
-  fetchArticles,
-  fetchArticleById
-}
+*/
