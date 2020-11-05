@@ -6,7 +6,7 @@ route.get('/', async (req, res) => {
     const articles = await fetchArticles()
     res.render('pages/articles', { articles })
   } catch (e) {
-    console.error(e)
+    console.log(e)
     res.redirect('/')
   }
 })

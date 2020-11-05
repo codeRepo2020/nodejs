@@ -5,7 +5,10 @@ const db = new Sequelize(
   'sampleblogdb', 'samplebloguser', 'sampleblogpass',
   {
     dialect: 'mysql',
-    host: 'localhost',
+    host: 'database-1.c0r4pfaajeuc.us-east-2.rds.amazonaws.com',
+    user:'admin',
+    password:'shubham.2',
+    port:'3306',
     logging: false
   }
 )

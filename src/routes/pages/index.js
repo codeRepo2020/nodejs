@@ -9,5 +9,6 @@ route.use((req, res, next) => {
 
 route.use('/articles', require('./articles'))
 route.use('/auth', require('./auth'))
+route.use('/', require('./homepage'))
 
 module.exports = route
