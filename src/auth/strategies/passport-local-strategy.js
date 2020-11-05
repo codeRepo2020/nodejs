@@ -11,6 +11,7 @@ const strategy = new LocalStrategy(async (username, password, done) => {
       return done(new Error('Password mismatch'))
     }
     user.password = undefined
+    console.log(user)
     return done(null, user)
   } catch (e) {
     return done(e)

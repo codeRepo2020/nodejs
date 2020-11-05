@@ -13,10 +13,11 @@ route.get('/', async (req, res) => {
 
 route.post('/', async (req, res) => {
   // Add a new article
+  
   const article = await createArticle(
     req.body.title,
     req.body.content,
-    1 // TODO: Use actual user id from req.user.id
+    req.user.id // TODO: Use actual user id from req.user.id
   )
   res.send(article)
 })

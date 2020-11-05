@@ -1,5 +1,5 @@
 const route = require('express').Router()
-const { fetchArticles, fetchArticleById } = require('../../controllers/articles')
+const { fetchArticles, fetchArticleById,createArticle } = require('../../controllers/articles')
 
 route.get('/', async (req, res) => {
   try {
@@ -8,6 +8,28 @@ route.get('/', async (req, res) => {
   } catch (e) {
     console.log(e)
     res.redirect('/')
+  }
+})
+
+route.post('/', async (req, res) => {
+  // Add a new article
+  var id =1
+  console.log('session'+JSON.stringify(req.session))
+  console.log('session'+JSON.stringify(req.session))
+  console.log(JSON.stringify(req.body))
+  if(req.session.passport){
+  id=req.session.passport.user
+  }
+  if(id!=1){
+  const article = await createArticle(   
+    req.body.title,
+    req.body.content,
+    id // TODO: Use actual user id from req.user.id
+  )
+  res.send(article)
+  }
+  else{
+    res.redirect('/login')
   }
 })
 

@@ -72,6 +72,11 @@ app.post('/signup',async (req, res, next) => {
   res.redirect('/login')
 })
 
+app.get('/createArticle',
+  (req, res) => res.sendFile('./html/createArticle.html',
+  { root: __dirname })
+);
+
 module.exports = {
   app
 }

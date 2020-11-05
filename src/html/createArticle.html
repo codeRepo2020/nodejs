@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title> Login </title>
+  <title> Create Article </title>
 </head>
     <body background='the-town-bg-02.jpg' ,background-repeat:no-repeat></body>
+    <centre>
 <body>
-  <form action="/login" method="post">
+    
+  <form action="/articles" method="post">
     <div class="title">
-      <h3>Login</h3>
+      <h2>Create Article</h2>
     </div>
     <div class="field">
-      <label>Username:</label>
-      <input type="text" name="username" />
+      <label>Title:</label>
+      <input type="text" name="title" />
       <br />
     </div>
-    <div class="field">
-      <label>Password:</label>
-      <input type="password" name="password" required />
-    </div>
-    <div class="field">
+      
+      <br>
+      <br>
+      <textarea id="textArea" name="content" rows="30" cols="200"></textarea>
       <input class="submit-btn" type="submit" value="Submit" required />
-    </div>
     <label id="error-message"></label>
   </form>
 
@@ -34,6 +34,7 @@
       errorMessage.style.display = "block";
     }
   </script>
+  
 </body>
+</centre>
 </html>
-On this page, we have a simple login form, with username and password fields, as well as a Submit button. Below
