@@ -47,13 +47,7 @@ async function fetchArticleById (articleId) {
   }
 }
 
-module.exports = {
-  createArticle,
-  fetchArticles,
-  fetchArticleById
-}
-/*
-async function fetchArticleById (articleId) {
+async function fetchAnyArticleById (articleId) {
   try {
     return await Article.findById(articleId, {
       include: [
@@ -73,4 +67,10 @@ async function fetchArticleById (articleId) {
   }
 }
 
-*/
+module.exports = {
+  createArticle,
+  fetchArticles,
+  fetchArticleById,
+  fetchAnyArticleById
+}
+

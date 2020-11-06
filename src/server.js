@@ -24,7 +24,21 @@ app.use(passport.initialize())
 app.use(passport.session())
 //app.use(path.join(__dirname, '../public', './routes/pages/auth/login'));
 app.use('/', express.static(path.join(__dirname, '../public/')))
-
+app.use('/', express.static(path.join(__dirname, '../public')))
+app.use('/articles', express.static(__dirname + '../public'));
+app.use('articles', express.static(__dirname + '../public'));
+app.use('/articles/myArticle', express.static(__dirname + '../public/'));
+app.use('/id', express.static(__dirname + '../public/'));
+app.use('/myArticle', express.static(__dirname + '../public/'));
+app.use('myArticle', express.static(__dirname + '../public/'));
+console.log('path'+path.join(__dirname, '../public/'))
+app.use(express.static(__dirname + '../public/'));
+app.use('/articles/img',express.static(path.join(__dirname, '../public/img')));
+app.use('/articles/js',express.static(path.join(__dirname, '../public/js')));
+app.use('/articles/css',express.static(path.join(__dirname, '../public/css')));
+app.use('/articles/fontawesome-5.5',express.static(path.join(__dirname, '../public/fontawesome-5.5')));
+app.use('/articles/magnific-popup',express.static(path.join(__dirname, '../public/magnific-popup')));
+app.use('/articles/slick',express.static(path.join(__dirname, '../public/slick')));
 app.use(express.static('../public/')); 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))

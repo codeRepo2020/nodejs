@@ -1,5 +1,5 @@
 const route = require('express').Router()
-const { fetchArticles, fetchArticleById,createArticle } = require('../../controllers/articles')
+const { fetchArticles, fetchArticleById,createArticle,fetchAnyArticleById } = require('../../controllers/articles')
 
 route.get('/', async (req, res) => {
   try {
@@ -47,9 +47,9 @@ route.get('/myArticle', async (req, res) => {
     res.redirect('/')
   }
   try {
-    const article = await fetchArticleById(articleId)
-    console.log('articleId'+JSON.stringify(article))
-    res.render('pages/id', { article })
+    const articles = await fetchArticleById(articleId)
+    console.log('articleId'+JSON.stringify(articles))
+    res.render('pages/id', { articles })
   } catch (e) {
     throw e
   }
@@ -57,5 +57,21 @@ route.get('/myArticle', async (req, res) => {
   res.redirect('/login')
 }
 })
+
+route.get('/:id', async (req, res) => {
+    // Fetch a particular article
+    const articleId = req.params.id
+
+    if (isNaN(parseInt(articleId))) {
+      console.error(new Error('Article ID is not correct number'))
+      res.redirect('/')
+    }
+    try {
+      const articles = await fetchAnyArticleById(articleId)
+      res.render('pages/id', { articles })
+    } catch (e) {
+      throw e
+    }
+  })
 
 module.exports = route
