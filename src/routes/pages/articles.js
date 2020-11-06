@@ -25,7 +25,7 @@ route.post('/', async (req, res) => {
     req.body.content,
     id // TODO: Use actual user id from req.user.id
   )
-  res.send(article)
+  res.redirect('articles/myArticle')
   }
   else{
     res.redirect('/login')
